@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+
+class Complex {
+private:
+    float real, imag;
+
+public:
+    Complex() : real(0), imag(0) {}
+    Complex(float r, float i) : real(r), imag(i) {}
+
+
+    Complex operator+(const Complex& other) const {
+        return Complex(real + other.real, imag + other.imag);
+    }
+
+    void display() const {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+
+class Time {
+private:
+    int hours, minutes;
+
+public:
+    Time() : hours(0), minutes(0) {}
+    Time(int h, int m) : hours(h), minutes(m) {}
+
+    Time operator+(const Time& other) const {
+        int totalMinutes = minutes + other.minutes;
+        int totalHours = hours + other.hours + (totalMinutes / 60);
+        totalMinutes %= 60;
+        return Time(totalHours, totalMinutes);
+    }
+
+    void display() const {
+        cout << hours << " hours and " << minutes << " minutes" << endl;
+    }
+};
+
+
+int main() {
+    // Complex number example
+    Complex c1(3.2, 4.5), c2(1.8, 2.5);
+    Complex cSum = c1 + c2;
+    cout << "Sum of complex numbers: ";
+    cSum.display();
+
+
+    Time t1(2, 45), t2(1, 30);
+    Time tSum = t1 + t2;
+    cout << "Sum of time durations: ";
+    tSum.display();
+
+    return 0;
+}
