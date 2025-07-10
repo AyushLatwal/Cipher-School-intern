@@ -43,7 +43,7 @@ public:
 
 
 int main() {
-    // Complex number example
+ 
     Complex c1(3.2, 4.5), c2(1.8, 2.5);
     Complex cSum = c1 + c2;
     cout << "Sum of complex numbers: ";
